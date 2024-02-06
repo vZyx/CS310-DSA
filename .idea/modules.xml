@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CS310-DSA.iml" filepath="$PROJECT_DIR$/CS310-DSA.iml" />
       <module fileurl="file://$PROJECT_DIR$/LAB1-Arrays/LAB1-Arrays.iml" filepath="$PROJECT_DIR$/LAB1-Arrays/LAB1-Arrays.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LAB2-Linked-List/LAB2-Linked-List.iml" filepath="$PROJECT_DIR$/LAB2-Linked-List/LAB2-Linked-List.iml" />
     </modules>
   </component>
 </project>
