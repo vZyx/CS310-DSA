@@ -1,43 +1,53 @@
 package Queue;
 
 
-class List_Node {
-    int val;
-    ListNode next;
 
-    public List_Node(int val) {
-        this.val = val;
-        this.next = null;
-    }
-}
 
-public class linkedlist_strcture
+public class SinglyLinkedList_implementation<E>
 {
 
-    private Node head;
-    private Node tail;
-    private int length;
+    private static class Node<E> {
+        private E element;
+        private Node<E> next;
 
-    class Node {
-        int value;
-        Node next;
+        public Node(E e, Node<E> n) {
+            this.element = e;
+            this.next = n;
+        }
 
-        Node(int value) {
-            this.value = value;
+        public Node(E element) {
+            this.element = element;
+        }
+
+        public E get_element(){
+            return this.element;
+        }
+
+        public Node<E> getNext() {
+            return this.next;
+        }
+
+        public void setNext(Node<E> n) {
+            this.next = n;
         }
     }
 
-    public linkedlist_strcture(int value) {
-        Node newNode = new Node(value);
-        head = newNode;
-        tail = newNode;
-        length = 1;
+
+    private Node<E> head;
+    private Node<E> tail;
+    private int length = 0;
+
+    public SinglyLinkedList_implementation(E e) {
+        Node<E> newNode = new Node<E>(e);
+        this.head = null;
+        this.tail = null;
+        this.length = 1;
     }
 
     public void printList() {
         Node temp = head;
         while (temp != null) {
-            System.out.println(temp.value);
+            System.out.println(temp.element);
             temp = temp.next;
         }
     }
@@ -46,7 +56,7 @@ public class linkedlist_strcture
         if (head == null) {
             System.out.println("Head: null");
         } else {
-            System.out.println("Head: " + head.value);
+            System.out.println("Head: " + head.element);
         }
     }
 
@@ -54,7 +64,7 @@ public class linkedlist_strcture
         if (head == null) {
             System.out.println("Tail: null");
         } else {
-            System.out.println("Tail: " + tail.value);
+            System.out.println("Tail: " + tail.element);
         }
     }
 
@@ -70,7 +80,7 @@ public class linkedlist_strcture
     }
 
     public void append(int value) {
-        Node newNode = new Node(value);
+        Node<E> newNode = new Node(value);
         if (length == 0) {
             head = newNode;
             tail = newNode;
@@ -81,10 +91,10 @@ public class linkedlist_strcture
         length++;
     }
 
-    public Node removeLast() {
+    public Node<E> removeLast() {
         if (length == 0) return null;
-        Node temp = head;
-        Node pre = head;
+        Node<E> temp = head;
+        Node<E> pre = head;
         while(temp.next != null) {
             pre = temp;
             temp = temp.next;
@@ -101,7 +111,7 @@ public class linkedlist_strcture
 
 
     public static void main(String[] args) {
-        linkedlist_strcture myLinkedList = new linkedlist_strcture(4);
+        SinglyLinkedList_implementation myLinkedList = new SinglyLinkedList_implementation(4);
 //      linkedlist1
         myLinkedList.getHead();
         myLinkedList.getTail();
@@ -111,7 +121,7 @@ public class linkedlist_strcture
         myLinkedList.printList();
 
 //      linkedlist2
-        linkedlist_strcture myLinkedList2 = new linkedlist_strcture(1);
+        SinglyLinkedList_implementation myLinkedList2 = new SinglyLinkedList_implementation(1);
         myLinkedList2.makeEmpty();
         myLinkedList2.append(1);
         myLinkedList2.append(2);
@@ -124,13 +134,13 @@ public class linkedlist_strcture
         myLinkedList2.printList();
 
 //        linkedlist3
-        linkedlist_strcture myLinkedList3 = new linkedlist_strcture(1);
+        SinglyLinkedList_implementation myLinkedList3 = new SinglyLinkedList_implementation(1);
         myLinkedList3.append(2);
 
         // (2) Items - Returns 2 Node
-        System.out.println(myLinkedList3.removeLast().value);
+        System.out.println(myLinkedList3.removeLast().element);
         // (1) Item - Returns 1 Node
-        System.out.println(myLinkedList3.removeLast().value);
+        System.out.println(myLinkedList3.removeLast().element);
         // (0) Items - Returns null
         System.out.println(myLinkedList3.removeLast());
 
