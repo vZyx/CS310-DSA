@@ -17,8 +17,9 @@ public class SinglyLinkedList {
     ListNode tail;
 
     public SinglyLinkedList() {
-        head = new ListNode(-1);
-        tail = head;
+        // Initialize both head and tail to null initially
+        head = null;
+        tail = null;
     }
 
     public void insertEnd(int val) {
