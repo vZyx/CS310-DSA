@@ -24,6 +24,6 @@ public class SumOfDigits {
         // Calculate and print the sum of digits for each test case
         System.out.println("Sum of digits of " + num1 + ": " + sumOfDigits(num1));
         System.out.println("Sum of digits of " + num2 + ": " + sumOfDigits(num2));
-        System.out.println("Sum of digits of " + num3 + ": " + sumOfDigits(num2));
+        System.out.println("Sum of digits of " + num3 + ": " + sumOfDigits(num3));
     }
 }
