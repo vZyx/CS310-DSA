@@ -2,23 +2,23 @@ package Queue;
 
 public class SinglyLinkedList_implementation<E>
 {
-    // inner class (nested class)
-    private class Node<E>
+    // inner class (nested class)default access level
+    class Node<E>
     {
         private E value;
-        private Node<E> next; // pointer  to a node
+        private Node<E> next; // next means that it can this variable can point to a Node
 
         public Node(E value) {
             this.value = value;
         }
     }
 
-    private Node<E> head; //pointer
-    private Node<E> tail; //pointer
+    private Node<E> head; //means head can point to a Node
+    private Node<E> tail; //means tail can point to a Node
     private int length = 0;
 
     public SinglyLinkedList_implementation(E value) {
-        Node<E> newNode = new Node<E>(value);
+        Node<E> newNode = new Node<E>(value); // declare and calls Node constructor
         this.head = newNode;
         this.tail = newNode;
         this.length = 1;

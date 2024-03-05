@@ -2,6 +2,39 @@ package Queue;
 
 
 public class CircularLinkedList<E> {
+
+    //Nested Node inner-class:
+    private static class Node<E> {
+        private E data; //reference to the data in the Node
+        private Node next; //reference to the next Node in the list
+
+        //constructor
+        Node(E data, Node<E> next) {
+            this.data = data;
+            this.next = next;
+        }
+
+        public Node()
+        {
+        }
+
+        E getData() {
+            return data;
+        }
+
+        void setData(E data) {
+            this.data = data;
+        }
+
+        Node<E> getNext() {
+            return next;
+        }
+
+        void setNext(Node<E> next) {
+            this.next = next;
+        }
+    }//end of Node class
+
     //Attributes
     private  Node<E> head = null; //reference to the first Node in the list
     private  Node<E> tail = null; //reference to the last Node in the list
@@ -9,13 +42,11 @@ public class CircularLinkedList<E> {
 
     //Constructor
     public CircularLinkedList(E value) {
-        Node<E> newNode = new Node<E>(value);
+        Node<E> newNode = new Node<E>(value, null);
         this.head = newNode;
         this.tail = newNode;
         this.length = 1;
     }
-
-    public CircularLinkedList() {}
 
     //Accessor methods
     public int getLength() {
@@ -50,6 +81,7 @@ After moving the head reference, it updates the tail reference to point to the n
         }//end if
     }//end of rotate
 
+
     public void display() {
         if (isEmpty()) {
             System.out.println("\nEmpty List.. ");
@@ -65,7 +97,10 @@ After moving the head reference, it updates the tail reference to point to the n
         } while (current != head);
     }
 
-    public void findNode(E key) {
+    // Algorithm: Searching
+    // Input: Circular LinkedList, Value
+    // Output: Display Node number when value found
+    public void search(E key) {
         if (isEmpty()) {
             System.out.println("\nEmpty list...");
             return;
@@ -85,7 +120,11 @@ After moving the head reference, it updates the tail reference to point to the n
         System.out.println("\nNot found...");
     }//end find
 
-    public void removeFirst() {
+
+    // Algorithm: deleteFirst
+    // Input: Circular LinkedList
+    // Output: update Circular LinkedList
+    public void deleteFirst() {
         if (isEmpty()) {
             System.out.println("\nEmpty list...");
             return;
@@ -99,8 +138,12 @@ After moving the head reference, it updates the tail reference to point to the n
         } //if this was the last and only node.. fix tail& head
     }//end of removeFirst
 
+
+    // Algorithm: delete
+    // Input: Circular LinkedList, Value
+    // Output: update Circular LinkedList
     // Remove the last element from the list
-    public void removeLast() {
+    public void deleteLast() {
         if (isEmpty()) {
             throw new IllegalStateException("List is empty");
         }
@@ -118,22 +161,6 @@ After moving the head reference, it updates the tail reference to point to the n
         length--;
     }
 
-    // Remove the node at the specified position from the list
-    public void removeNodeAtPosition(int position) {
-        if (position < 0 || position >= length) {
-            throw new IllegalArgumentException("Invalid position");
-        }
-        if (position == 0) {
-            removeFirst();
-        } else {
-            Node<E> current = head;
-            for (int i = 0; i < position - 1; i++) {
-                current = current.getNext();
-            }
-            current.setNext(current.getNext().getNext());
-            length--;
-        }
-    }
 
     public void addFirst(E data) {
         Node<E> newNode = new Node(data, head);
@@ -170,7 +197,7 @@ After moving the head reference, it updates the tail reference to point to the n
         } else if (position == length) {
             addLast(value);
         } else {
-            Node<E> newNode = new Node<>(value);
+            Node<E> newNode = new Node<>(value, null);
             Node<E> current = head;
             for (int i = 0; i < position - 1; i++) {
                 current = current.getNext();
@@ -181,45 +208,60 @@ After moving the head reference, it updates the tail reference to point to the n
         }
     }
 
-
-    //Nested Node inner-class:
-    private static class Node<E> {
-        private E data; //reference to the data in the Node
-        private Node next; //reference to the next Node in the list
-
-        //constructor
-        Node(E data, Node<E> next) {
-            this.data = data;
-            this.next = next;
+    // Remove the node at the specified position from the list
+    public void deleteNodeAtPosition(int position) {
+        if (position < 0 || position >= length) {
+            throw new IllegalArgumentException("Invalid position");
         }
-
-        public Node(E data) {
-            this.data = data;
+        if (position == 0) {
+            deleteFirst();
+        } else {
+            Node<E> current = head;
+            for (int i = 0; i < position - 1; i++) {
+                current = current.getNext();
+            }
+            current.setNext(current.getNext().getNext());
+            length--;
         }
-
-        E getData() {
-            return data;
-        }
-
-        void setData(E data) {
-            this.data = data;
-        }
-
-        Node<E> getNext() {
-            return next;
-        }
-
-        void setNext(Node<E> next) {
-            this.next = next;
-        }
-    }//end of Node class
+    }
 
     public static void main(String[] args) {
-        System.out.println("Hello");
-        CircularLinkedList myList = new CircularLinkedList();
-        myList.addFirst("IAU");
-        myList.addFirst(2322);
+        CircularLinkedList<String> myList = new CircularLinkedList<>("null");
+
+        // Adding elements to the list
+        myList.addLast("Apple");
+        myList.addLast("Banana");
+        myList.addLast("Orange");
+
+        // Displaying the list
+        System.out.println("Initial list:");
+        myList.display();
+
+        // Searching for an element
+        myList.search("Banana");
+
+        // Deleting the first node
+        myList.deleteFirst();
+        System.out.println("\nList after deleting first node:");
+        myList.display();
+
+        // Deleting a node at position 1
+        myList.deleteNodeAtPosition(1);
+        System.out.println("\nList after deleting node at position 1:");
+        myList.display();
+
+        // Adding an element at position 1
+        myList.addAtPosition("Grapes", 1);
+        System.out.println("\nList after adding 'Grapes' at position 1:");
+        myList.display();
+
+        // Deleting the last node
+        myList.deleteLast();
+        System.out.println("\nList after deleting last node:");
         myList.display();
     }
 
+
 }
+
+
