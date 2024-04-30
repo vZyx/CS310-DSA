@@ -72,9 +72,11 @@ public class DoublyLinkedList<E> {
         DoublyLinkedList dll = new DoublyLinkedList<>();
         dll.insertFirst(1);
         dll.insertFirst(2);
+
         dll.insertLast(3);
         dll.insertLast(4);
         dll.print(); // Output: 2 -> 1 -> 3 -> 4 ->
+
         dll.removeFirst();
         dll.removeEnd();
         dll.print(); // Output: 1 -> 3 ->

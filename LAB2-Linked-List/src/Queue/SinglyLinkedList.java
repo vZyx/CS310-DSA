@@ -23,18 +23,19 @@ public class SinglyLinkedList {
     }
 
     public void printList() {
-        Node temp = head;
-        while (temp != null) {
-            System.out.println(temp.value);
-            temp = temp.next; //current now point to next node
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.value + " ");
+            current = current.next; //current now point to next node
         }
+        System.out.println();
     }
 
     // Method to search for a value in the linked list
     void search(int value) {
         Node current = head;
-        int position = 1;
 
+        int position = 1;
         boolean found = false;
 
         while (current != null) {
@@ -187,6 +188,34 @@ public class SinglyLinkedList {
 
     public static void main(String[] args)
     {
+        SinglyLinkedList list = new SinglyLinkedList(10);
+        list.printList();
 
+        list.addFirst(20);
+        list.printList();
+
+        list.addAtPos(30, 2);
+        list.printList();
+        System.out.println("delete first");
+        list.deleteFirst();
+        list.printList();
+        System.out.println("delete first");
+        list.delete(20);
+        list.printList();
+
+        list.search(30);
+        System.out.println("add pos 2 40");
+        list.addAtPos(40, 2);
+        list.printList();
+
+        list.addAtPos(50, 4);
+        list.printList();
+
+        list.getHead();
+        list.getTail();
+        list.getLength();
+
+        System.out.println("Maximum value: " + list.findMax());
+        System.out.println("Minimum value: " + list.findMin());
     }
 }
