@@ -9,6 +9,8 @@
       <module fileurl="file://$PROJECT_DIR$/LAB4-Stack/LAB4-Stack.iml" filepath="$PROJECT_DIR$/LAB4-Stack/LAB4-Stack.iml" />
       <module fileurl="file://$PROJECT_DIR$/LAB5-Sorting/LAB5-Sorting.iml" filepath="$PROJECT_DIR$/LAB5-Sorting/LAB5-Sorting.iml" />
       <module fileurl="file://$PROJECT_DIR$/LAB6-Queue/LAB6-Queue.iml" filepath="$PROJECT_DIR$/LAB6-Queue/LAB6-Queue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LAB7-Tree/LAB7-Tree.iml" filepath="$PROJECT_DIR$/LAB7-Tree/LAB7-Tree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LAB8-Graph/LAB8-Graph.iml" filepath="$PROJECT_DIR$/LAB8-Graph/LAB8-Graph.iml" />
     </modules>
   </component>
 </project>

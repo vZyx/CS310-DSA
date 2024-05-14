@@ -1,5 +1,5 @@
 
-
+// Linear QueueArray
 public class QueueArray {
     private int front = 0 , rear = 0,  capacity = 0,  size = 0;
     private int[] Queue;
@@ -19,7 +19,7 @@ public class QueueArray {
     // Method to add an element to the rear of the queue
     public void EnQueue(int value) {
         if (isFull()) {
-            System.out.println("Queue is full. Cannot enqueue.");
+            System.out.println("Queue is overflow. Cannot enqueue.");
             return;
         }
         Queue[rear] = value;
@@ -31,7 +31,7 @@ public class QueueArray {
     // Method to remove an element from the front of the queue
     public int DeQueue() {
         if (isEmpty()) {
-            System.out.println("Queue is empty. Cannot dequeue.");
+            System.out.println("Queue is empty (underflow). Cannot dequeue.");
             return -1; // or throw an exception
         }
         int temp = Queue[front];
@@ -79,6 +79,16 @@ public class QueueArray {
 
     public static void main(String[] args) {
         QueueArray queue = new QueueArray(5);
+        queue.EnQueue(10);
+        queue.EnQueue(20);
+        queue.EnQueue(30);
+        queue.EnQueue(40);
+
+        queue.DeQueue();
+        queue.DeQueue();
+        System.out.println("Front: " + queue.getFront());
+        System.out.println("size: " + queue.getSize());
+        queue.Display();
 //        queue.EnQueue(4);
 //        queue.EnQueue(20);
 //        queue.EnQueue(50);
@@ -91,15 +101,5 @@ public class QueueArray {
 //        queue.DeQueue(); // 4
 //        queue.Display(); //
 //        System.out.println("Size of queue: " + queue.getSize()); // 5
-        queue.EnQueue(10);
-        queue.EnQueue(20);
-        queue.EnQueue(30);
-        queue.EnQueue(40);
-        queue.DeQueue();
-        queue.DeQueue();
-        System.out.println("Front: " + queue.getFront());
-        System.out.println("size: " + queue.getSize());
-        queue.Display();
-
     }
 }

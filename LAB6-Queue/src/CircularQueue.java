@@ -1,3 +1,5 @@
+
+//  CircularQueue Array
 public class CircularQueue {
     private int[] queue;
     private int front = 0, rear = 0, capacity = 0, size = 0;
@@ -42,6 +44,25 @@ public class CircularQueue {
     // Method to get the size of the circular queue
     public int getSize() { return size;}
 
+    // Method to get the front element of the circular queue
+    public int getFront() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty");
+            return -1; // or throw an exception
+        }
+        return queue[front];
+    }
+
+    // Method to get the rear element of the circular queue
+    public int getRear() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty");
+            return -1; // or throw an exception
+        }
+        return queue[(rear - 1 + capacity) % capacity];
+    }
+
+
     // Method to display the elements of the circular queue
     public void Display() {
         if (isEmpty()) {
@@ -49,10 +70,8 @@ public class CircularQueue {
             return;
         }
         System.out.print("Queue: ");
-        int i = front;
-        while (i != rear) {
+        for (int i = front; i < rear; i++) {
             System.out.print(queue[i] + " ");
-            i = (i + 1) % capacity;
         }
         System.out.println();
     }

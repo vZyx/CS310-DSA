@@ -19,15 +19,15 @@ public class QueueLinkedList {
         }
     }
 
-    private Node front, rear;
+    private Node front = null, rear = null;
     private int size;
 
     // Constructor to initialize the queue
-    public QueueLinkedList() {
-        front = null;
-        rear = null;
-        size = 0;
-    }
+//    public QueueLinkedList() {
+//        front = null;
+//        rear = null;
+//        size = 0;
+//    }
 
     // Method to check if the queue is empty
     public boolean isEmpty() {return size == 0;}
@@ -58,7 +58,7 @@ public class QueueLinkedList {
         Node newNode = new Node(data);
         if (isEmpty()) {
             front = newNode;
-            rear = newNode;
+            rear  = newNode;
         } else {
             rear.next = newNode;
             rear = newNode;
